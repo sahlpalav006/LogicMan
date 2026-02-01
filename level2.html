@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logic Man - Level 2</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <div class="game-container">
+    <h1>LOGIC MAN</h1>
+    <p id="hint">Decrypting hint...</p>
+    <div id="word"></div>
+    <p id="status">Attempts: ❤️❤️❤️❤️❤️❤️❤️</p>
+    <div id="keyboard"></div>
+  </div>
+
+  <div id="scoreBoard" class="score-board">
+    <div class="score-card">
+      <h2 id="scoreStatus">RESULT</h2>
+      <div id="starRating" class="stars">☆☆☆</div>
+      <p>AGENT: <span id="playerName" style="color:white; font-weight:bold;">---</span></p>
+      <p>SCORE: <span id="scoreText">0</span></p>
+      <div class="score-buttons">
+        <button class="btn-next" onclick="goToNextLevel()">NEXT MISSION</button>
+        <button class="btn-restart" onclick="location.reload()" style="background:#475569; color:white; padding:10px; border-radius:8px; border:none; cursor:pointer; margin-top:10px; width:100%;">TRY AGAIN</button>
+        <button onclick="window.location.href='levels.html'" style="background:none; color:#94a3b8; border:none; cursor:pointer; margin-top:10px; width:100%;">EXIT</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    localStorage.setItem("currentLevel", 2); 
+    document.getElementById("playerName").innerText = localStorage.getItem("player") || "GUEST";
+  </script>
+  <script src="words.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

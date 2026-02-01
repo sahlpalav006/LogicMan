@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logic Man - Word Guessing Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="game-container">
+    <h1>💡 Logic Man</h1>
+
+    <p id="hint">Hint: </p>
+
+    <canvas id="bulbCanvas" width="200" height="200"></canvas>
+
+    <div id="word"></div>
+
+    <div id="keyboard"></div>
+
+    <p id="status"></p>
+  </div>
+
+  <!-- SCOREBOARD POPUP -->
+  <div class="score-board" id="scoreBoard">
+    <div class="score-card">
+
+      <h2 id="scoreStatus"></h2>
+
+      <p>Your Score: <span id="scoreText">0</span></p>
+
+      <div class="score-buttons">
+        <button onclick="goToNextLevel()">Continue</button>
+        <button onclick="location.reload()">Retry</button>
+      </div>
+
+    </div>
+  </div>
+
+
+<script src="words.js"></script>
+<script src="game.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logic Man </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Modern Gaming UI Overrides */
+        body {
+            background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .login-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 50px 40px;
+            border-radius: 4px; /* Sharper corners look more professional/military */
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 212, 255, 0.05);
+            text-align: center;
+        }
+
+        /* Decorative Corner Brackets */
+        .login-card::before, .login-card::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00d4ff;
+        }
+        .login-card::before { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+        .login-card::after { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+
+        .game-logo {
+            margin-bottom: 40px;
+        }
+
+        .game-logo h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+            letter-spacing: 5px;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+        }
+
+        .game-logo span {
+            font-size: 0.7rem;
+            color: #00d4ff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .input-wrapper {
+            position: relative;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .input-wrapper label {
+            display: block;
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #334155;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.05);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .extra-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .remember-me input {
+            margin-right: 8px;
+            accent-color: #00d4ff;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(90deg, #0055ff, #00d4ff);
+            border: none;
+            color: white;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%); /* Tactical shape */
+        }
+
+        .login-btn:hover {
+            filter: brightness(1.2);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .status-bar {
+            margin-top: 30px;
+            font-family: monospace;
+            font-size: 0.65rem;
+            color: #475569;
+            border-top: 1px solid #1e293b;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Scanning Line Effect */
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 212, 255, 0.2);
+            animation: scan 4s linear infinite;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="scanline"></div>
+        
+        <div class="game-logo">
+            <h1>LOGIC MAN</h1>
+            <span>PLAY TO WIN </span>
+        </div>
+
+        <div class="input-wrapper">
+            <label>Agent Username</label>
+            <input type="text" id="username" class="input-field" placeholder="ID-7729" autocomplete="off">
+        </div>
+
+        <div class="input-wrapper">
+            <label>Access Pin</label>
+            <input type="password" id="password" class="input-field" placeholder="••••••••">
+        </div>
+
+        <div class="extra-options">
+            <label class="remember-me">
+                <input type="checkbox"> Remember Connection
+            </label>
+            <a href="#" style="color: #64748b; text-decoration: none;">Forgot Pin?</a>
+        </div>
+
+        <button class="login-btn" onclick="handleLogin()">Establish Link</button>
+
+        <div class="status-bar">
+            <span>SECURE_CONNECTION: OK</span>
+            <span>V 1.0.4</span>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin() {
+            const user = document.getElementById("username").value;
+            const pass = document.getElementById("password").value;
+
+            if (!user.trim() || !pass.trim()) {
+                alert("ACCESS DENIED: Credentials Required.");
+                return;
+            }
+
+            // Save the player name for the game to use
+            localStorage.setItem("player", user.toUpperCase());
+            
+            // Visual transition feel
+            const btn = document.querySelector('.login-btn');
+            btn.innerText = "LINKING...";
+            btn.style.opacity = "0.7";
+
+            setTimeout(() => {
+                window.location.href = "levels.html";
+            }, 800);
+        }
+
+        // Allow Enter key to submit
+        document.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleLogin();
+        });
+    </script>
+</body>
+</html>
